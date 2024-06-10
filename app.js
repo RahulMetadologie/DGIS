@@ -65,16 +65,14 @@ app.get("/generate-label", async (req, res) => {
    // console.log('binaryData',binaryData);
     // console.log("Binary Data:", binaryData);
     const imageBuffer = Buffer.from(binaryData, 'binary');
-    let img = `<img src='${imageBuffer}'></img>`;
-    res.send(img);
-  //   console.log("image buffer",imageBuffer)
+    console.log("image buffer",imageBuffer)
 
-  //   // Set response headers and send the image
-  //   res.writeHead(200, {
-  //     'Content-Type': 'image/png',
-  //     'Content-Length': imageBuffer.length
-  //   });
-  //  res.end(imageBuffer); // it will send the image to the client side
+    // Set response headers and send the image
+    res.writeHead(200, {
+      'Content-Type': 'image/png',
+      'Content-Length': imageBuffer.length
+    });
+   res.end(imageBuffer); // it will send the image to the client side
   } catch (error) {
     console.error("Error in generating label:", error);
     res.status(500).send("Error in generating label");
